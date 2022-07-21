@@ -11,13 +11,6 @@ public class Enemy : MonoBehaviour
     NavMeshAgent _navMeshAgent;
     Stats _stats;
 
-    void Start()
-    {
-        transform.LookAt(_goal.transform);
-        _navMeshAgent.enabled = true;
-        _navMeshAgent.SetDestination(_goal.transform.position);
-    }
-
     [Inject]
     void Construct(Stats stats, Goal goal)
     {
@@ -25,6 +18,13 @@ public class Enemy : MonoBehaviour
         _goal = goal;
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _navMeshAgent.speed = _stats.speed;
+    }
+
+    void Start()
+    {
+        transform.LookAt(_goal.transform);
+        _navMeshAgent.enabled = true;
+        _navMeshAgent.SetDestination(_goal.transform.position);
     }
 
     [Serializable]

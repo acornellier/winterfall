@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 3133428960218316968}
   - component: {fileID: 3247263116046483603}
   - component: {fileID: 4115281207550899074}
-  m_Layer: 0
-  m_Name: RedPrefab
+  m_Layer: 7
+  m_Name: RedEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,7 +135,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2397417159661614250}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1
   m_Speed: 3.5

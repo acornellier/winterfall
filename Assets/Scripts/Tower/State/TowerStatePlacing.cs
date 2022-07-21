@@ -35,7 +35,7 @@ public class TowerStatePlacing : TowerState
 
         var bounds = Tower.Collider.bounds;
         var boxCenter = bounds.center;
-        var halfExtents = bounds.size / 2 + Vector3.one * 1;
+        var halfExtents = bounds.size / 2;
 
         var placeable = !Physics.CheckBox(
             boxCenter,

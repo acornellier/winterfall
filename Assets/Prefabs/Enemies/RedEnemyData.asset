@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c19b41b9b9448088b7880f7dd8220d5, type: 3}
-  m_Name: RedSummonData
+  m_Name: RedEnemyData
   m_EditorClassIdentifier: 
   prefab: {fileID: 2397417159661614250, guid: 0f1b05e39a4bf44479d57e465e5b0f55, type: 3}
   stats:

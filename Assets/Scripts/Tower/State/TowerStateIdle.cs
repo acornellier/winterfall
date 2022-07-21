@@ -1,4 +1,5 @@
-﻿using Zenject;
+﻿using UnityEngine;
+using Zenject;
 
 public class TowerStateIdle : TowerState
 {
@@ -8,6 +9,8 @@ public class TowerStateIdle : TowerState
 
     public override void Tick()
     {
+        Tower.UpdateTarget();
+        Tower.transform.rotation = Quaternion.identity;
     }
 
     public override void OnEnter()

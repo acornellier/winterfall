@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
 public class EnemySpawner : IInitializable, ITickable
 {
-    readonly List<Enemy> _enemies = new();
     [Inject] readonly Enemy.Factory _enemyFactory;
     [Inject] readonly Settings _settings;
     [Inject] readonly Spawn _spawn;
@@ -15,7 +13,7 @@ public class EnemySpawner : IInitializable, ITickable
 
     public void Initialize()
     {
-        _timeToNextSpawn = 10;
+        _timeToNextSpawn = _settings.initialWaitTime;
     }
 
     public void Tick()
@@ -31,15 +29,15 @@ public class EnemySpawner : IInitializable, ITickable
         _timeToNextSpawn += _settings.timeBetweenSpawns;
         _enemiesSpawned += 1;
 
-        var enemy = _enemyFactory.Create(_settings.summonData.prefab, _settings.summonData.stats);
+        var enemy = _enemyFactory.Create(_settings.data.prefab, _settings.data.stats);
         enemy.transform.position = _spawn.transform.position;
-        _enemies.Add(enemy);
     }
 
     [Serializable]
     public class Settings
     {
-        public EnemySummonData summonData;
+        public int initialWaitTime = 0;
+        public EnemyData data;
         public int numberOfEnemies;
         public float timeBetweenSpawns;
     }

@@ -5,7 +5,7 @@ using Zenject;
 [RequireComponent(typeof(Button))]
 public class PlaceTowerButton : MonoBehaviour
 {
-    [SerializeField] Tower tower;
+    [SerializeField] TowerData towerData;
 
     [Inject] readonly TowerPlacer _towerPlacer;
 
@@ -25,12 +25,12 @@ public class PlaceTowerButton : MonoBehaviour
 
     void OnValidate()
     {
-        if (tower != null)
-            gameObject.name = tower.name + " Button";
+        if (towerData != null)
+            gameObject.name = towerData.details.name + " Button";
     }
 
     void PlaceTower()
     {
-        _towerPlacer.SetTowerToPlace(tower);
+        _towerPlacer.SetTowerToPlace(towerData);
     }
 }

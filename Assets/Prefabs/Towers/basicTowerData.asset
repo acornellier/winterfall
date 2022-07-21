@@ -9,13 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e3c997b52e9f94ca81f528e6e170d1, type: 3}
-  m_Name: GameSettings
+  m_Script: {fileID: 11500000, guid: ec929724718c44e0bbce9dec4765b692, type: 3}
+  m_Name: basicTowerData
   m_EditorClassIdentifier: 
-  goal:
-    maxHealth: 10
-  enemySpawner:
-    initialWaitTime: 0
-    data: {fileID: 11400000, guid: 070e8f7630d8bd248a5f1da012a9c5be, type: 2}
-    numberOfEnemies: 10
-    timeBetweenSpawns: 1
+  prefab: {fileID: 1838262316766984144, guid: 57f15f7224fd87f458f1a620a8999723, type: 3}
+  details:
+    name: Basic
+    description: Shoots bad guys
+    range: 3
+    damage: 1
