@@ -3,15 +3,15 @@ using Zenject;
 
 public class TowerPlacer
 {
-    [Inject] readonly Tower.Factory towerFactory;
+    [Inject] readonly Tower.Factory _towerFactory;
 
-    Tower currentPlacingTower;
+    Tower _currentPlacingTower;
 
     public void SetTowerToPlace(Tower tower)
     {
-        if (currentPlacingTower is { Placed: false, })
-            Object.Destroy(currentPlacingTower.gameObject);
+        if (_currentPlacingTower is { Placed: false, })
+            Object.Destroy(_currentPlacingTower.gameObject);
 
-        currentPlacingTower = towerFactory.Create(tower);
+        _currentPlacingTower = _towerFactory.Create(tower);
     }
 }

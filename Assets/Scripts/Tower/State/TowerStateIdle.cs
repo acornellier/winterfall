@@ -2,10 +2,10 @@
 
 public class TowerStateIdle : TowerState
 {
-    public TowerStateIdle(Tower tower): base(tower)
+    public TowerStateIdle(Tower tower) : base(tower)
     {
     }
-    
+
     public override void Tick()
     {
     }

@@ -3,20 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class EnemySpawner : ITickable
+public class EnemySpawner : IInitializable, ITickable
 {
-    [Inject] readonly Settings _settings;
+    readonly List<Enemy> _enemies = new();
     [Inject] readonly Enemy.Factory _enemyFactory;
+    [Inject] readonly Settings _settings;
     [Inject] readonly Spawn _spawn;
+    int _enemiesSpawned;
 
     float _timeToNextSpawn;
-    int _enemiesSpawned;
-    List<Enemy> _enemies = new();
+
+    public void Initialize()
+    {
+        _timeToNextSpawn = 10;
+    }
 
     public void Tick()
     {
         if (_enemiesSpawned >= _settings.numberOfEnemies) return;
-        
+
         if (_timeToNextSpawn > 0)
         {
             _timeToNextSpawn -= Time.deltaTime;

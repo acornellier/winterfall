@@ -4,9 +4,7 @@ using Object = UnityEngine.Object;
 
 public class GameInstaller : MonoInstaller
 {
-    [Inject] readonly Settings settings;
-
-    // ReSharper disable Unity.PerformanceAnalysis
+    [Inject] readonly Settings _settings; // ReSharper disable Unity.PerformanceAnalysis
     public override void InstallBindings()
     {
         Container.Bind<Spawn>().FromComponentInHierarchy().AsSingle();

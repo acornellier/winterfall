@@ -5,10 +5,10 @@ using Zenject;
 [RequireComponent(typeof(BoxCollider), typeof(NavMeshObstacle), typeof(Outline))]
 public class Tower : MonoBehaviour
 {
-    StateMachine<TowerState> stateMachine;
+    StateMachine _stateMachine;
 
-    [Inject] TowerStateIdle.Factory towerStateIdleFactory;
-    [Inject] TowerStatePlacing.Factory towerStatePlacingFactory;
+    [Inject] TowerStateIdle.Factory _towerStateIdleFactory;
+    [Inject] TowerStatePlacing.Factory _towerStatePlacingFactory;
 
     public BoxCollider Collider { get; private set; }
     public NavMeshObstacle NavMeshObstacle { get; private set; }
@@ -21,22 +21,23 @@ public class Tower : MonoBehaviour
         Outline = GetComponent<Outline>();
         NavMeshObstacle = GetComponent<NavMeshObstacle>();
 
-        stateMachine = new StateMachine<TowerState>();
+        _stateMachine = new StateMachine();
 
-        var placing = towerStatePlacingFactory.Create(this);
-        var idle = towerStateIdleFactory.Create(this);
+        var placing = _towerStatePlacingFactory.Create(this);
+        var idle = _towerStateIdleFactory.Create(this);
 
-        stateMachine.AddTransition(placing, idle, () => Placed);
+        _stateMachine.AddTransition(placing, idle, () => Placed);
     }
 
     void Start()
     {
-        stateMachine.SetState(towerStatePlacingFactory.Create(this));
+        _stateMachine.SetState(_towerStatePlacingFactory.Create(this));
     }
 
     void Update()
     {
-        stateMachine.Tick();
+        print("Update");
+        _stateMachine.Tick();
     }
 
     public void Place()

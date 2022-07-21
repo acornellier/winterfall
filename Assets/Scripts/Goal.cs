@@ -4,14 +4,13 @@ using Zenject;
 
 public class Goal : MonoBehaviour
 {
+    int _health;
     [Inject] Settings _settings;
 
-    int health;
-    
-    public void OnTriggerEnter(Collider collider)
+    public void OnTriggerEnter(Collider trigger)
     {
-        health -= 1;
-        Destroy(collider.gameObject);
+        _health -= 1;
+        Destroy(trigger.gameObject);
     }
 
     [Serializable]

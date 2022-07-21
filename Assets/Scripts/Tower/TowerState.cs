@@ -1,4 +1,4 @@
-﻿public abstract class TowerState: IState
+﻿public abstract class TowerState : IState
 {
     protected readonly Tower Tower;
 

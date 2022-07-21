@@ -1,20 +1,19 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using Zenject;
 
 public class TowerStatePlacing : TowerState
 {
-    readonly Camera mainCamera;
+    readonly Camera _mainCamera;
 
-    readonly LayerMask terrainMask;
+    readonly LayerMask _terrainMask;
 
     public TowerStatePlacing(
         Tower tower,
         [Inject(Id = "Main")] Camera mainCamera) : base(tower)
     {
-        this.mainCamera = mainCamera;
-        terrainMask = 1 << LayerMask.NameToLayer("Terrain");
+        _mainCamera = mainCamera;
+        _terrainMask = 1 << LayerMask.NameToLayer("Terrain");
     }
 
     public override void OnEnter()
@@ -25,8 +24,8 @@ public class TowerStatePlacing : TowerState
 
     public override void Tick()
     {
-        var camray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        if (!Physics.Raycast(camray, out var hitInfo, 100f, terrainMask))
+        var camray = _mainCamera.ScreenPointToRay(Input.mousePosition);
+        if (!Physics.Raycast(camray, out var hitInfo, 100f, _terrainMask))
             return;
 
         Tower.transform.position = hitInfo.point;
@@ -36,13 +35,13 @@ public class TowerStatePlacing : TowerState
 
         var bounds = Tower.Collider.bounds;
         var boxCenter = bounds.center;
-        var halfExtents = bounds.size / 2;
+        var halfExtents = bounds.size / 2 + Vector3.one * 1;
 
         var placeable = !Physics.CheckBox(
             boxCenter,
             halfExtents,
             Quaternion.identity,
-            ~terrainMask,
+            ~_terrainMask,
             QueryTriggerInteraction.Ignore
         );
 

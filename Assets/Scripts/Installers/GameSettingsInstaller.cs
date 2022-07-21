@@ -6,9 +6,7 @@ public class GameSettingsInstaller : ScriptableObjectInstaller<GameSettingsInsta
 {
     public Goal.Settings goal;
     public EnemySpawner.Settings enemySpawner;
-    public GameInstaller.Settings gameInstaller;
-
-    // ReSharper disable Unity.PerformanceAnalysis
+    public GameInstaller.Settings gameInstaller; // ReSharper disable Unity.PerformanceAnalysis
     public override void InstallBindings()
     {
         Container.BindInstance(goal);

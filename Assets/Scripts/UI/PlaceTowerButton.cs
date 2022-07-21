@@ -7,19 +7,30 @@ public class PlaceTowerButton : MonoBehaviour
 {
     [SerializeField] Tower tower;
 
-    [Inject] readonly TowerPlacer towerPlacer;
+    [Inject] readonly TowerPlacer _towerPlacer;
 
-    Button button;
+    Button _button;
 
     void Awake()
     {
-        button = GetComponent<Button>();
-        button.onClick.AddListener(() => towerPlacer.SetTowerToPlace(tower));
+        _button = GetComponent<Button>();
+        _button.onClick.AddListener(PlaceTower);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+            PlaceTower();
     }
 
     void OnValidate()
     {
         if (tower != null)
             gameObject.name = tower.name + " Button";
+    }
+
+    void PlaceTower()
+    {
+        _towerPlacer.SetTowerToPlace(tower);
     }
 }
