@@ -15,6 +15,7 @@ public class TowerStateFiring : TowerState
             return;
 
         Tower.LookAt(target.transform.position);
+        Tower.Weapon.TickFire(target);
     }
 
     public override void OnEnter()

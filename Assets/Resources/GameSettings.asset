@@ -17,5 +17,5 @@ MonoBehaviour:
   enemySpawner:
     initialWaitTime: 0
     data: {fileID: 11400000, guid: 070e8f7630d8bd248a5f1da012a9c5be, type: 2}
-    numberOfEnemies: 10
+    numberOfEnemies: 100
     timeBetweenSpawns: 1

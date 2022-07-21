@@ -15,10 +15,10 @@ public class GameInstaller : MonoInstaller
         Container.Bind<TowerPlacer>().AsSingle();
 
         // TODO
-        Container.BindInstance(new TowerDetails()).AsSingle();
+        Container.BindInstance(new TowerSettings());
 
-        Container.BindFactory<Tower, TowerDetails, Tower, Tower.Factory>()
-            .FromFactory<PrefabFactory<TowerDetails, Tower>>();
+        Container.BindFactory<Tower, TowerSettings, Tower, Tower.Factory>()
+            .FromFactory<PrefabFactory<TowerSettings, Tower>>();
 
         Container.BindFactory<Tower, TowerStatePlacing, TowerStatePlacing.Factory>();
         Container.BindFactory<Tower, TowerStateIdle, TowerStateIdle.Factory>();

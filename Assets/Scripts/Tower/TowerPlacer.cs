@@ -12,6 +12,6 @@ public class TowerPlacer
         if (_currentPlacingTower is { Placed: false, })
             Object.Destroy(_currentPlacingTower.gameObject);
 
-        _currentPlacingTower = _towerFactory.Create(towerData.prefab, towerData.details);
+        _currentPlacingTower = _towerFactory.Create(towerData.prefab, towerData.settings);
     }
 }

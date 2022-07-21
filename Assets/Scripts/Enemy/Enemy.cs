@@ -2,20 +2,23 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
-using Object = UnityEngine.Object;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : MonoBehaviour
 {
-    Goal _goal;
-
-    NavMeshAgent _navMeshAgent;
     Stats _stats;
+    Goal _goal;
+    NavMeshAgent _navMeshAgent;
+
+    float _currentHealth;
 
     [Inject]
     void Construct(Stats stats, Goal goal)
     {
         _stats = stats;
         _goal = goal;
+        _currentHealth = _stats.maxHealth;
+
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _navMeshAgent.speed = _stats.speed;
     }
@@ -27,13 +30,21 @@ public class Enemy : MonoBehaviour
         _navMeshAgent.SetDestination(_goal.transform.position);
     }
 
+    public void TakeDamage(float damage)
+    {
+        _currentHealth -= damage;
+        if (_currentHealth <= 0)
+            Destroy(gameObject);
+    }
+
     [Serializable]
     public class Stats
     {
         public float speed = 1;
+        public int maxHealth = 1;
     }
 
-    public class Factory : PlaceholderFactory<Object, Stats, Enemy>
+    public class Factory : PlaceholderFactory<UnityEngine.Object, Stats, Enemy>
     {
     }
 }

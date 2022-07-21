@@ -46,6 +46,7 @@ public class TowerStatePlacing : TowerState
         );
 
         Tower.Outline.OutlineWidth = placeable ? 0 : 10;
+        Tower.Outline.OutlineColor = Color.red;
 
         if (placeable && Input.GetMouseButtonDown(0) &&
             !EventSystem.current.IsPointerOverGameObject())

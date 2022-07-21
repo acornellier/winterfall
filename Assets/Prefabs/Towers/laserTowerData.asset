@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec929724718c44e0bbce9dec4765b692, type: 3}
-  m_Name: basicTowerData
+  m_Name: laserTowerData
   m_EditorClassIdentifier: 
-  prefab: {fileID: 167639245, guid: 57f15f7224fd87f458f1a620a8999723, type: 3}
-  shortcut: 98
+  prefab: {fileID: 167639245, guid: 7cf88dbcb6378ed45b8e221a21c9249b, type: 3}
+  shortcut: 108
   settings:
-    name: Basic
-    description: Pew pew
+    name: Laser
+    description: Zap zap
     weapon:
-      range: 4
-      damage: 1
-      fireRate: 2
+      range: 3
+      damage: 0.1
+      fireRate: 10

@@ -2,12 +2,15 @@ using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
 
-[RequireComponent(typeof(BoxCollider), typeof(NavMeshObstacle), typeof(Outline))]
+[RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(NavMeshObstacle))]
+[RequireComponent(typeof(Outline))]
+[RequireComponent(typeof(IWeapon))]
 public class Tower : MonoBehaviour
 {
     [SerializeField] GameObject head;
 
-    [Inject] public TowerDetails Details { get; private set; }
+    [Inject] public TowerSettings Settings { get; private set; }
     [Inject] TowerStateIdle.Factory _towerStateIdleFactory;
     [Inject] TowerStatePlacing.Factory _towerStatePlacingFactory;
     [Inject] TowerStateFiring.Factory _towerStateFiringFactory;
@@ -17,6 +20,7 @@ public class Tower : MonoBehaviour
     public BoxCollider Collider { get; private set; }
     public NavMeshObstacle NavMeshObstacle { get; private set; }
     public Outline Outline { get; private set; }
+    public IWeapon Weapon { get; private set; }
 
     public EnemyDetector EnemyDetector { get; private set; }
     public bool Placed { get; private set; }
@@ -28,6 +32,9 @@ public class Tower : MonoBehaviour
         Collider = GetComponent<BoxCollider>();
         Outline = GetComponent<Outline>();
         NavMeshObstacle = GetComponent<NavMeshObstacle>();
+        Weapon = GetComponent<IWeapon>();
+        Weapon.Initialize(Settings.weapon);
+
         EnemyDetector = new EnemyDetector();
 
         var placing = _towerStatePlacingFactory.Create(this);
@@ -49,7 +56,7 @@ public class Tower : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, Details.range);
+        Gizmos.DrawWireSphere(transform.position, Settings.weapon.range);
         Gizmos.color = Color.red;
         if (EnemyDetector.Target)
             Gizmos.DrawLine(transform.position, EnemyDetector.Target.transform.position);
@@ -68,10 +75,10 @@ public class Tower : MonoBehaviour
 
     public void UpdateTarget()
     {
-        EnemyDetector.UpdateTarget(transform.position, Details.range);
+        EnemyDetector.UpdateTarget(transform.position, Settings.weapon.range);
     }
 
-    public class Factory : PlaceholderFactory<Tower, TowerDetails, Tower>
+    public class Factory : PlaceholderFactory<Tower, TowerSettings, Tower>
     {
     }
 }

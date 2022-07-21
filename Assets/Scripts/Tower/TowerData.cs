@@ -4,5 +4,6 @@
 public class TowerData : ScriptableObject
 {
     public Tower prefab;
-    public TowerDetails details;
+    public KeyCode shortcut;
+    public TowerSettings settings;
 }

@@ -19,14 +19,14 @@ public class PlaceTowerButton : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(towerData.shortcut))
             PlaceTower();
     }
 
     void OnValidate()
     {
         if (towerData != null)
-            gameObject.name = towerData.details.name + " Button";
+            gameObject.name = towerData.settings.name + " Button";
     }
 
     void PlaceTower()

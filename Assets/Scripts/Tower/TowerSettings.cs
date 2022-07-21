@@ -1,10 +1,9 @@
 ﻿using System;
 
 [Serializable]
-public class TowerDetails
+public class TowerSettings
 {
     public string name;
     public string description;
-    public int range = 1;
-    public int damage = 1;
+    public WeaponSettings weapon = new();
 }
