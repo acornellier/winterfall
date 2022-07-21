@@ -17,10 +17,12 @@ public class Enemy : MonoBehaviour
         _goal = goal;
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _navMeshAgent.speed = _stats.speed;
+        
     }
 
-    void Update()
+    void Start()
     {
+        transform.LookAt(_goal.transform);
         _navMeshAgent.enabled = true;
         _navMeshAgent.SetDestination(_goal.transform.position);
     }

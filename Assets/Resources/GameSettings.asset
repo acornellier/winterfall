@@ -15,6 +15,8 @@ MonoBehaviour:
   player:
     speed: 4
     sensitivity: 4
+  goal:
+    maxHealth: 10
   enemySpawner:
     summonData: {fileID: 11400000, guid: 070e8f7630d8bd248a5f1da012a9c5be, type: 2}
     numberOfEnemies: 10

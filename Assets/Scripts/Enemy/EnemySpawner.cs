@@ -16,7 +16,6 @@ public class EnemySpawner : ITickable
     public void Tick()
     {
         if (_enemiesSpawned >= _settings.numberOfEnemies) return;
-        // if (_enemies.Count >= 1) return;
         
         if (_timeToNextSpawn > 0)
         {
