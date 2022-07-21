@@ -3,26 +3,23 @@ using UnityEngine.UI;
 using Zenject;
 
 [RequireComponent(typeof(Button))]
-public class PlaceTowerButton: MonoBehaviour
+public class PlaceTowerButton : MonoBehaviour
 {
     [SerializeField] Tower tower;
-    [SerializeField] GameObject asdf;
-    
-    [Inject] readonly Tower.Factory _towerFactory;
-    
-    Button _button;
+
+    [Inject] readonly TowerPlacer towerPlacer;
+
+    Button button;
 
     void Awake()
     {
-        _button = GetComponent<Button>();
-        _button.onClick.AddListener(() => _towerFactory.Create(tower));
+        button = GetComponent<Button>();
+        button.onClick.AddListener(() => towerPlacer.SetTowerToPlace(tower));
     }
 
     void OnValidate()
     {
         if (tower != null)
-        {
             gameObject.name = tower.name + " Button";
-        }
     }
 }

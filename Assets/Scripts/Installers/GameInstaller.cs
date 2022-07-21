@@ -1,20 +1,20 @@
 using System;
-using UnityEngine;
 using Zenject;
+using Object = UnityEngine.Object;
 
 public class GameInstaller : MonoInstaller
 {
-    [Inject]
-    readonly Settings _settings;
+    [Inject] readonly Settings settings;
 
     // ReSharper disable Unity.PerformanceAnalysis
     public override void InstallBindings()
     {
-        // Container.Bind<Camera>().FromComponentInHierarchy().AsSingle();
         Container.Bind<Spawn>().FromComponentInHierarchy().AsSingle();
         Container.Bind<Goal>().FromComponentInHierarchy().AsSingle();
-        
-        Container.Bind<TowerStatePlacing>().AsSingle();
+
+        Container.Bind<TowerPlacer>().AsSingle();
+
+        // Container.Bind<TowerStatePlacing>().AsSingle();
 
         Container.BindFactory<Tower, Tower, Tower.Factory>()
             .FromFactory<PrefabFactory<Tower>>();
@@ -23,7 +23,7 @@ public class GameInstaller : MonoInstaller
         Container.BindFactory<Tower, TowerStateIdle, TowerStateIdle.Factory>();
 
         Container.BindInterfacesTo<EnemySpawner>().AsSingle();
-        Container.BindFactory<UnityEngine.Object, Enemy.Stats, Enemy, Enemy.Factory>()
+        Container.BindFactory<Object, Enemy.Stats, Enemy, Enemy.Factory>()
             .FromFactory<PrefabFactory<Enemy.Stats, Enemy>>();
     }
 
