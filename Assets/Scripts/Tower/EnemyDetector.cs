@@ -12,6 +12,7 @@ public class EnemyDetector
         _enemyMask = 1 << LayerMask.NameToLayer("Enemy");
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     public void UpdateTarget(Vector3 position, int range)
     {
         if (Target != null && Vector3.Distance(Target.transform.position, position) < range)

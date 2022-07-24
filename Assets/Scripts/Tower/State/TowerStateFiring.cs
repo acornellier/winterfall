@@ -12,7 +12,10 @@ public class TowerStateFiring : TowerState
 
         var target = Tower.EnemyDetector.Target;
         if (target == null)
+        {
+            Tower.Weapon.StopFiring();
             return;
+        }
 
         Tower.LookAt(target.transform.position);
         Tower.Weapon.TickFire(target);
@@ -24,6 +27,7 @@ public class TowerStateFiring : TowerState
 
     public override void OnExit()
     {
+        Tower.Weapon.StopFiring();
     }
 
     public class Factory : PlaceholderFactory<Tower, TowerStateFiring>

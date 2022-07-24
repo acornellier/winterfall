@@ -189,6 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b75e2f4d1af034ba6890c84379b96b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 5564782988045340802}
   healthBarImage: {fileID: 6199826134914850022}
 --- !u!54 &3247263116046483603
 Rigidbody:

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec929724718c44e0bbce9dec4765b692, type: 3}
   m_Name: laserTowerData
   m_EditorClassIdentifier: 
-  prefab: {fileID: 167639245, guid: 7cf88dbcb6378ed45b8e221a21c9249b, type: 3}
+  prefab: {fileID: 554792472888263902, guid: 807e3cc57b493004daaa5fa4f093a566, type: 3}
   shortcut: 108
   settings:
     name: Laser

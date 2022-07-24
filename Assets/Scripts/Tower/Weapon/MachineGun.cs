@@ -2,23 +2,33 @@
 
 public class MachineGun : MonoBehaviour, IWeapon
 {
-    WeaponSettings _settings;
-    float _timeUntilNextDamage;
+    [SerializeField] Bullet bulletPrefab;
+    [SerializeField] Transform muzzle;
 
-    public virtual void Initialize(WeaponSettings settings)
+    WeaponSettings _settings;
+    float _timeUntilNextShot;
+
+    public void Initialize(WeaponSettings settings)
     {
         _settings = settings;
     }
 
-    public virtual void TickFire(Enemy target)
+    public void TickFire(Enemy target)
     {
-        if (_timeUntilNextDamage > 0f)
+        if (_timeUntilNextShot > 0f)
         {
-            _timeUntilNextDamage -= Time.deltaTime;
+            _timeUntilNextShot -= Time.deltaTime;
             return;
         }
 
-        target.TakeDamage(_settings.damage);
-        _timeUntilNextDamage = 1f / _settings.fireRate;
+        var bullet = Instantiate(bulletPrefab);
+        bullet.transform.position = muzzle.transform.position;
+        bullet.Initialize(target, _settings);
+
+        _timeUntilNextShot = 1f / _settings.fireRate;
+    }
+
+    public void StopFiring()
+    {
     }
 }

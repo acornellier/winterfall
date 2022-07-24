@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3319106161884447484
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4379799377428010127}
+  m_Layer: 0
+  m_Name: muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4379799377428010127
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3319106161884447484}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.6600015}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3853373905543517346}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8974404892760423279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10,11 +41,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 95db17046238f53488c14a32b717014f, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 95db17046238f53488c14a32b717014f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.771141
+      value: 18.633003
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 95db17046238f53488c14a32b717014f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -22,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 95db17046238f53488c14a32b717014f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.957878
+      value: 19.04791
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 95db17046238f53488c14a32b717014f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -57,11 +88,19 @@ PrefabInstance:
       value: basicTower
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5328482478806888397, guid: 95db17046238f53488c14a32b717014f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4379799377428010127}
   m_SourcePrefab: {fileID: 100100000, guid: 95db17046238f53488c14a32b717014f, type: 3}
 --- !u!1 &2426654668880645993 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2511240423080479738, guid: 95db17046238f53488c14a32b717014f, type: 3}
+  m_PrefabInstance: {fileID: 8974404892760423279}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3853373905543517346 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5328482478806888397, guid: 95db17046238f53488c14a32b717014f, type: 3}
   m_PrefabInstance: {fileID: 8974404892760423279}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &8091302093602555454 stripped
@@ -110,6 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a3f033bb0b42d38616ecb29f979e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 7408623253464002412, guid: 99e74a051f3fc5d4395c6d06be58e019, type: 3}
+  muzzle: {fileID: 4379799377428010127}
 --- !u!114 &167639245
 MonoBehaviour:
   m_ObjectHideFlags: 0

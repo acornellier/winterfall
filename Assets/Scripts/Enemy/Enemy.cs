@@ -7,6 +7,7 @@ using Zenject;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] Canvas canvas;
     [SerializeField] Image healthBarImage;
 
     Stats _stats;
@@ -35,7 +36,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        healthBarImage.transform.LookAt(Camera.main.transform);
+        canvas.transform.LookAt(Camera.main.transform);
     }
 
     public void TakeDamage(float damage)
