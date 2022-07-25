@@ -2,7 +2,6 @@
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 1;
     Enemy _target;
     WeaponSettings _weaponSettings;
 
@@ -21,14 +20,14 @@ public class Bullet : MonoBehaviour
         }
 
         var direction = _target.transform.position - transform.position;
-        var distanceThisFrame = speed * Time.deltaTime;
-        if (direction.magnitude <= distanceThisFrame)
+        var distanceThisFrame = _weaponSettings.bulletSpeed * Time.deltaTime;
+        if (direction.magnitude > distanceThisFrame)
         {
-            _target.TakeDamage(_weaponSettings.damage);
-            Destroy(gameObject);
+            transform.Translate(direction.normalized * distanceThisFrame, Space.World);
             return;
         }
 
-        transform.Translate(direction.normalized * distanceThisFrame, Space.World);
+        _target.TakeDamage(_weaponSettings.damage);
+        Destroy(gameObject);
     }
 }

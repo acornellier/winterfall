@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6188150455150780877}
   - component: {fileID: 5443897195381837233}
   - component: {fileID: 2466648735355680950}
-  - component: {fileID: 1825407787887114473}
+  - component: {fileID: 724874540554906006}
   m_Layer: 0
   m_Name: missileTower
   m_TagString: Untagged
@@ -35,7 +35,7 @@ Transform:
   m_Children:
   - {fileID: 5981209933617027365}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &8271166603447825405
 BoxCollider:
@@ -97,7 +97,7 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &1825407787887114473
+--- !u!114 &724874540554906006
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,10 +106,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3331905164226542924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c3513ec6ec14d3094a9e747d3a02439, type: 3}
+  m_Script: {fileID: 11500000, guid: ed6f34c0e7e5442f8c045d16e8f14a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineRenderer: {fileID: 0}
+  missilePrefab: {fileID: -5703886048619669534, guid: 252fcc95d6acb4348a6994886d55e953, type: 3}
+  muzzle: {fileID: 3128642295310350820}
 --- !u!1001 &6092033031239548622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -172,6 +173,11 @@ PrefabInstance:
 --- !u!1 &697345322314435272 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -2511240423080479738, guid: d8424d0df3682144081d0263ab107d28, type: 3}
+  m_PrefabInstance: {fileID: 6092033031239548622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3128642295310350820 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9214387191625991978, guid: d8424d0df3682144081d0263ab107d28, type: 3}
   m_PrefabInstance: {fileID: 6092033031239548622}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5981209933617027365 stripped

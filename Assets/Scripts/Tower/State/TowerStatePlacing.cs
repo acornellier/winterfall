@@ -1,6 +1,9 @@
-﻿using UnityEngine;
+﻿using System.Numerics;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using Zenject;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 public class TowerStatePlacing : TowerState
 {
@@ -28,14 +31,15 @@ public class TowerStatePlacing : TowerState
         if (!Physics.Raycast(camray, out var hitInfo, 100f, _terrainMask))
             return;
 
-        Tower.transform.position = hitInfo.point;
+        var pos = new Vector3((int)hitInfo.point.x, hitInfo.point.y, (int)hitInfo.point.z);
+        Tower.transform.position = pos;
 
         if (ReferenceEquals(hitInfo.collider.gameObject, null))
             return;
 
         var bounds = Tower.Collider.bounds;
         var boxCenter = bounds.center;
-        var halfExtents = bounds.size / 2;
+        var halfExtents = bounds.size / 2 - 0.1f * Vector3.one;
 
         var placeable = !Physics.CheckBox(
             boxCenter,

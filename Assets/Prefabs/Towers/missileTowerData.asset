@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ec929724718c44e0bbce9dec4765b692, type: 3}
-  m_Name: basicTowerData
+  m_Name: missileTowerData
   m_EditorClassIdentifier: 
-  prefab: {fileID: 167639245, guid: 57f15f7224fd87f458f1a620a8999723, type: 3}
-  shortcut: 98
+  prefab: {fileID: 5443897195381837233, guid: d7ddc038a5b4db144a3e98e212f5a19b, type: 3}
+  shortcut: 109
   settings:
-    name: Basic
-    description: Pew pew
+    name: Missile
+    description: Boom
     weapon:
       range: 4
-      damage: 1
-      fireRate: 2
-      bulletSpeed: 10
-      explosionRadius: 0
+      damage: 2
+      fireRate: 0.5
+      bulletSpeed: 5
+      explosionRadius: 5
